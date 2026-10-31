@@ -1,0 +1,800 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Українська з натхненням</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Literata:wght@500;700&family=Manrope:wght@400;500;700&display=swap">
+<style>
+/* Layout: світла сторінка з липкою шапкою; герой у дві колонки (вітання + «Спробуй себе»), далі секції в колонці до 1120px. Орнамент-вишиванка тільки як тонка смуга. */
+:root {
+  --bg: #F6F8FC;
+  --surface: #FFFFFF;
+  --navy: #16294D;
+  --ink: #26334D;
+  --muted: #56627C;
+  --line: #DCE2EE;
+  --yellow: #E2B33C;
+  --yellow-soft: #FBF2D3;
+  --ok: #1B6F47;
+  --ok-bg: #E5F3EB;
+  --bad: #A23838;
+  --bad-bg: #FBEAEA;
+  --warn-bg: #FFF6DB;
+  --font-display: "Literata", Georgia, "Times New Roman", serif;
+  --font-body: "Manrope", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  --band: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='14' viewBox='0 0 24 14'%3E%3Cpath d='M12 1.5l5.5 5.5-5.5 5.5L6.5 7z' fill='none' stroke='%2316294D' stroke-width='1.4'/%3E%3Cpath d='M12 4.6L14.4 7 12 9.4 9.6 7z' fill='%23E2B33C'/%3E%3Cpath d='M0 7h4.5M19.5 7H24' stroke='%2316294D' stroke-width='1.4'/%3E%3C/svg%3E");
+  color-scheme: light;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: auto; }
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 17px;
+  line-height: 1.65;
+  -webkit-text-size-adjust: 100%;
+}
+h1, h2, h3 { font-family: var(--font-display); color: var(--navy); line-height: 1.2; text-wrap: balance; margin: 0; font-weight: 700; }
+p { margin: 0; }
+a { color: var(--navy); }
+button, input { font: inherit; }
+:focus-visible { outline: 3px solid var(--navy); outline-offset: 3px; border-radius: 4px; }
+.sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.skip { position: absolute; left: 16px; top: -60px; background: var(--navy); color: #fff; padding: 10px 14px; border-radius: 6px; z-index: 50; }
+.skip:focus { top: 8px; }
+
+.wrap { width: 100%; max-width: 1120px; margin-inline: auto; padding-inline: clamp(16px, 4vw, 32px); }
+
+/* Шапка */
+.top { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 40; background: rgba(255,255,255,.96); border-bottom: 1px solid var(--line); }
+.top-in { display: flex; align-items: center; justify-content: space-between; gap: 16px; min-height: 64px; position: relative; }
+.brand { display: flex; align-items: center; gap: 10px; text-decoration: none; font-family: var(--font-display); font-weight: 700; font-size: 1.1rem; color: var(--navy); min-width: 0; }
+.brand svg { flex: none; }
+.menu-btn { display: inline-flex; align-items: center; gap: 8px; background: var(--surface); border: 1.5px solid var(--navy); color: var(--navy); border-radius: 8px; padding: 8px 14px; font-weight: 700; cursor: pointer; }
+.menu-btn:hover { background: var(--yellow-soft); }
+nav#nav { position: absolute; top: 100%; left: 0; right: 0; background: var(--surface); border-bottom: 1px solid var(--line); box-shadow: 0 12px 24px rgba(22,41,77,.08); display: none; padding: 8px clamp(16px, 4vw, 32px) 16px; }
+nav#nav.open { display: block; }
+nav#nav ul { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 4px 12px; }
+nav#nav a { display: block; padding: 10px 8px; text-decoration: none; font-weight: 500; color: var(--ink); border-bottom: 2px solid transparent; border-radius: 4px; }
+nav#nav a:hover { color: var(--navy); background: var(--yellow-soft); }
+nav#nav a[aria-current="true"] { color: var(--navy); font-weight: 700; border-bottom-color: var(--yellow); }
+@media (min-width: 1080px) {
+  .menu-btn { display: none; }
+  nav#nav { position: static; display: block; background: none; border: 0; box-shadow: none; padding: 0; }
+  nav#nav ul { display: flex; gap: 2px; }
+  nav#nav a { padding: 8px 10px; font-size: .92rem; }
+}
+
+/* Кнопки */
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 46px; padding: 10px 20px; border-radius: 8px; border: 1.5px solid var(--navy); background: var(--navy); color: #fff; font-weight: 700; text-decoration: none; cursor: pointer; transition: background .15s, color .15s; }
+.btn:hover { background: #0F1E3A; }
+.btn.accent { background: var(--yellow); border-color: var(--yellow); color: var(--navy); }
+.btn.accent:hover { background: #D1A230; border-color: #D1A230; }
+.btn.ghost { background: var(--surface); color: var(--navy); }
+.btn.ghost:hover { background: var(--yellow-soft); }
+.btn[disabled] { opacity: .5; cursor: not-allowed; }
+.btn-row { display: flex; flex-wrap: wrap; gap: 12px; }
+
+/* Герой */
+.hero { padding-block: clamp(32px, 6vw, 64px); }
+.hero-grid { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr); gap: clamp(24px, 4vw, 48px); align-items: start; }
+@media (max-width: 880px) { .hero-grid { grid-template-columns: minmax(0, 1fr); } }
+.eyebrow { display: inline-block; font-size: .78rem; font-weight: 700; letter-spacing: .09em; text-transform: uppercase; color: var(--muted); }
+.pill { display: inline-block; background: var(--yellow-soft); color: var(--navy); border: 1px solid var(--yellow); border-radius: 999px; padding: 2px 12px; font-size: .78rem; font-weight: 700; letter-spacing: .04em; }
+.hero h1 { font-size: clamp(2.1rem, 6vw, 3.6rem); margin-top: 14px; }
+.hero .lead { font-size: 1.15rem; margin-top: 18px; max-width: 60ch; }
+.hero .about { margin-top: 12px; max-width: 60ch; color: var(--muted); }
+.hero ul.feat { list-style: none; padding: 0; margin: 18px 0 26px; display: grid; gap: 8px; max-width: 60ch; }
+.hero ul.feat li { display: flex; gap: 10px; align-items: baseline; }
+.hero ul.feat li::before { content: ""; flex: none; width: 9px; height: 9px; background: var(--yellow); transform: rotate(45deg) translateY(-1px); }
+.band { height: 14px; background: var(--band) repeat-x left center; opacity: .9; }
+
+/* Секції */
+section.sec { padding-block: clamp(40px, 7vw, 72px); scroll-margin-top: 72px; border-top: 1px solid var(--line); }
+section.sec.alt { background: var(--surface); }
+.sec-head { display: grid; gap: 10px; margin-bottom: 28px; max-width: 70ch; }
+.sec-head h2 { font-size: clamp(1.6rem, 4vw, 2.3rem); }
+.sec-head p { color: var(--muted); }
+.grid { display: grid; gap: 18px; grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)); }
+.card { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 22px; display: flex; flex-direction: column; gap: 10px; min-width: 0; }
+.alt .card { background: var(--bg); }
+.card h3 { font-size: 1.2rem; }
+.card p { color: var(--ink); }
+.card .more { margin-top: auto; padding-top: 6px; font-weight: 700; text-decoration-thickness: 2px; text-decoration-color: var(--yellow); text-underline-offset: 4px; }
+.tags { display: flex; flex-wrap: wrap; gap: 8px; }
+.tag { background: var(--yellow-soft); border-radius: 6px; padding: 2px 10px; font-size: .92rem; color: var(--navy); }
+
+/* Деталі (accordion) */
+details { border-top: 1px solid var(--line); padding-top: 10px; }
+details summary { cursor: pointer; font-weight: 700; color: var(--navy); list-style: none; display: flex; justify-content: space-between; gap: 12px; padding: 4px 0; }
+details summary::-webkit-details-marker { display: none; }
+details summary::after { content: "+"; font-size: 1.3rem; line-height: 1; color: var(--navy); }
+details[open] summary::after { content: "–"; }
+details .body { display: grid; gap: 10px; padding: 10px 0 4px; }
+
+/* Таблиця */
+.table-scroll { overflow-x: auto; border: 1px solid var(--line); border-radius: 10px; background: var(--surface); }
+table { border-collapse: collapse; width: 100%; min-width: 520px; }
+th, td { text-align: left; padding: 12px 16px; border-bottom: 1px solid var(--line); vertical-align: top; }
+th { background: var(--navy); color: #fff; font-weight: 700; font-size: .92rem; letter-spacing: .03em; }
+tr:last-child td { border-bottom: 0; }
+td.bad { color: var(--bad); text-decoration: line-through; text-decoration-thickness: 1.5px; }
+td.ans { font-weight: 700; color: var(--ok); }
+.hide-ans td.ans:not(.shown) { color: transparent; background: var(--yellow-soft); cursor: pointer; user-select: none; }
+.switch { display: inline-flex; gap: 10px; align-items: center; margin-bottom: 14px; font-weight: 500; cursor: pointer; }
+.switch input { width: 20px; height: 20px; accent-color: var(--navy); }
+.tips { margin-top: 28px; }
+
+/* Вправи */
+.ex { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 22px; display: flex; flex-direction: column; gap: 14px; min-width: 0; }
+.alt .ex { background: var(--bg); }
+.ex.try { box-shadow: 0 10px 30px rgba(22,41,77,.08); border-color: var(--yellow); border-width: 2px; background: var(--surface); }
+.ex-kind { font-size: .76rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+.ex h3 { font-size: 1.15rem; }
+.stem { font-size: 1.05rem; }
+.stem mark { background: var(--yellow-soft); color: var(--navy); font-weight: 700; padding: 0 4px; border-radius: 3px; box-shadow: inset 0 -2px 0 var(--yellow); }
+.opts { display: grid; gap: 8px; }
+.opt { display: flex; gap: 12px; align-items: flex-start; padding: 12px 14px; background: var(--surface); border: 1.5px solid var(--line); border-radius: 8px; cursor: pointer; }
+.opt:hover { border-color: var(--navy); }
+.opt input { margin-top: 5px; width: 18px; height: 18px; accent-color: var(--navy); flex: none; }
+.opt.is-ok { border-color: var(--ok); background: var(--ok-bg); }
+.opt.is-bad { border-color: var(--bad); background: var(--bad-bg); }
+.opt.is-ok span::after { content: " ✓"; color: var(--ok); font-weight: 700; }
+.opt.is-bad span::after { content: " ✗"; color: var(--bad); font-weight: 700; }
+.gap { font-size: 1.1rem; line-height: 2.3; }
+.gap input[type="text"] { border: 0; border-bottom: 2.5px solid var(--navy); background: var(--yellow-soft); color: var(--navy); font-weight: 700; padding: 2px 8px; text-align: center; border-radius: 4px 4px 0 0; min-width: 3ch; max-width: 100%; }
+.gap input.is-ok { border-bottom-color: var(--ok); background: var(--ok-bg); }
+.gap input.is-bad { border-bottom-color: var(--bad); background: var(--bad-bg); }
+.actions { display: flex; flex-wrap: wrap; gap: 10px; }
+.fb { border-radius: 8px; padding: 12px 14px; border: 1.5px solid transparent; }
+.fb:empty { display: none; }
+.fb.ok { background: var(--ok-bg); border-color: var(--ok); }
+.fb.bad { background: var(--bad-bg); border-color: var(--bad); }
+.fb.warn { background: var(--warn-bg); border-color: var(--yellow); }
+.fb strong { display: block; margin-bottom: 2px; }
+.fb.ok strong { color: var(--ok); }
+.fb.bad strong { color: var(--bad); }
+.score { display: grid; gap: 10px; background: var(--navy); color: #fff; border-radius: 10px; padding: 18px 22px; margin-bottom: 20px; }
+.score-row { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px; }
+.score strong { font-family: var(--font-display); font-size: 1.3rem; }
+.bar { height: 10px; background: rgba(255,255,255,.2); border-radius: 99px; overflow: hidden; }
+.bar > i { display: block; height: 100%; width: 0; background: var(--yellow); transition: width .3s; }
+.score .btn { background: transparent; border-color: #fff; color: #fff; }
+.score .btn:hover { background: rgba(255,255,255,.12); }
+
+/* Література */
+.years { font-size: .9rem; color: var(--muted); font-weight: 500; }
+.work { font-style: italic; }
+.quiz { margin-top: 28px; max-width: 640px; }
+
+/* НМТ */
+.nmt-grid { display: grid; gap: 24px; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); align-items: start; }
+@media (max-width: 880px) { .nmt-grid { grid-template-columns: minmax(0, 1fr); } }
+.check { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
+.check label { display: flex; gap: 12px; align-items: flex-start; padding: 12px 14px; background: var(--bg); border: 1.5px solid var(--line); border-radius: 8px; cursor: pointer; }
+.check input { margin-top: 5px; width: 18px; height: 18px; accent-color: var(--navy); flex: none; }
+.check input:checked + span { text-decoration: line-through; text-decoration-color: var(--yellow); text-decoration-thickness: 2px; color: var(--muted); }
+.prog { margin-top: 16px; display: grid; gap: 8px; }
+.prog .bar { background: var(--line); }
+.note { background: var(--yellow-soft); border: 1px solid var(--yellow); border-radius: 10px; padding: 16px 18px; }
+
+/* Бібліотека */
+.tools { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; margin-bottom: 18px; }
+.search { flex: 1 1 240px; min-width: 0; border: 1.5px solid var(--line); border-radius: 8px; padding: 10px 14px; background: var(--surface); color: var(--ink); }
+.search:focus-visible { border-color: var(--navy); }
+.chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.chip { border: 1.5px solid var(--navy); background: var(--surface); color: var(--navy); padding: 6px 14px; border-radius: 999px; font-weight: 700; cursor: pointer; font-size: .92rem; }
+.chip[aria-pressed="true"] { background: var(--navy); color: #fff; }
+.lib-meta { color: var(--muted); font-size: .92rem; margin-bottom: 14px; }
+.lib-item .kind { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+.status { font-size: .8rem; font-weight: 700; color: var(--muted); border: 1px dashed var(--muted); border-radius: 6px; padding: 1px 8px; }
+.empty { padding: 24px; text-align: center; background: var(--surface); border: 1px dashed var(--line); border-radius: 10px; color: var(--muted); }
+
+/* Про вчителя, контакти */
+.about-grid { display: grid; gap: 28px; grid-template-columns: minmax(0, 260px) minmax(0, 1fr); align-items: start; }
+@media (max-width: 720px) { .about-grid { grid-template-columns: minmax(0, 1fr); } }
+.photo { aspect-ratio: 4 / 5; max-width: 100%; border: 2px dashed var(--muted); border-radius: 10px; display: grid; place-items: center; text-align: center; padding: 16px; color: var(--muted); background: var(--bg); }
+dl.fill { margin: 0; display: grid; gap: 14px; }
+dl.fill > div { background: var(--bg); border: 1px solid var(--line); border-radius: 10px; padding: 14px 18px; }
+dl.fill dt { font-weight: 700; color: var(--navy); }
+dl.fill dd { margin: 2px 0 0; color: var(--muted); }
+.contact-grid { display: grid; gap: 18px; grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr)); }
+.placeholder { color: var(--muted); font-style: italic; }
+
+footer { background: var(--navy); color: #E6EBF5; padding-block: 32px; }
+footer .band { filter: invert(1) brightness(1.6); margin-bottom: 24px; opacity: .5; }
+footer p { max-width: 70ch; font-size: .95rem; }
+footer a { color: #fff; }
+
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+</style>
+
+<a class="skip" href="#home" data-go="home">Перейти до змісту</a>
+
+<header class="top">
+  <div class="wrap top-in">
+    <a class="brand" href="#home" data-go="home" aria-label="Українська з натхненням — на головну">
+      <svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><rect width="30" height="30" rx="6" fill="#16294D"/><path d="M15 4.5l10.5 10.5L15 25.5 4.5 15z" fill="none" stroke="#E2B33C" stroke-width="1.8"/><path d="M15 10l5 5-5 5-5-5z" fill="#E2B33C"/></svg>
+      <span>Українська з натхненням</span>
+    </a>
+    <button class="menu-btn" id="menuBtn" type="button" aria-expanded="false" aria-controls="nav">Меню</button>
+    <nav id="nav" aria-label="Розділи сайту">
+      <ul>
+        <li><a href="#home" data-go="home">Головна</a></li>
+        <li><a href="#mova" data-go="mova">Мова</a></li>
+        <li><a href="#leksyka" data-go="leksyka">Лексика</a></li>
+        <li><a href="#vpravy" data-go="vpravy">Вправи</a></li>
+        <li><a href="#literatura" data-go="literatura">Література</a></li>
+        <li><a href="#nmt" data-go="nmt">НМТ</a></li>
+        <li><a href="#biblioteka" data-go="biblioteka">Бібліотека</a></li>
+        <li><a href="#pro-vchytelia" data-go="pro-vchytelia">Про вчителя</a></li>
+        <li><a href="#kontakty" data-go="kontakty">Контакти</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+<!-- 1. ГОЛОВНА -->
+<section class="sec hero" id="home" style="border-top:0">
+  <div class="wrap">
+    <div class="hero-grid">
+      <div>
+        <span class="pill">Демонстраційна версія</span>
+        <h1>Українська з натхненням</h1>
+        <p class="lead">Вітаємо вас на сайті для всіх, хто вивчає українську мову та літературу: школярів, студентів і тих, кому просто цікаво говорити й писати грамотно.</p>
+        <p class="about">Тут зібрано короткі правила з прикладами, вправи з миттєвою перевіркою, матеріали про письменників і підказки для підготовки до НМТ.</p>
+        <ul class="feat">
+          <li>Правила простою мовою, з прикладами</li>
+          <li>Вправи, де видно, чому відповідь правильна чи ні</li>
+          <li>Література й підготовка до НМТ в одному місці</li>
+        </ul>
+        <div class="btn-row">
+          <a class="btn accent" href="#vpravy" data-go="vpravy">Перейти до вправ</a>
+          <a class="btn ghost" href="#literatura" data-go="literatura">Літературні матеріали</a>
+        </div>
+      </div>
+
+      <div>
+        <div class="ex try" data-ex="try"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="band" aria-hidden="true"></div>
+
+<section class="sec alt" style="border-top:0">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Навчальні розділи</span>
+      <h2>Що можна робити на сайті</h2>
+    </div>
+    <div class="grid">
+      <article class="card"><h3>Українська мова</h3><p>Орфографія, морфологія, синтаксис і пунктуація: правила, які легко запам'ятати.</p><a class="more" href="#mova" data-go="mova">Відкрити розділ</a></article>
+      <article class="card"><h3>Лексика й культура мовлення</h3><p>Як позбутися кальок, добирати точні слова й говорити природною українською.</p><a class="more" href="#leksyka" data-go="leksyka">Відкрити розділ</a></article>
+      <article class="card"><h3>Інтерактивні вправи</h3><p>П'ять завдань трьох видів із перевіркою, поясненням і підрахунком результату.</p><a class="more" href="#vpravy" data-go="vpravy">Відкрити розділ</a></article>
+      <article class="card"><h3>Українська література</h3><p>Письменники від Сковороди до Ліни Костенко, питання для роздумів і міні-тест.</p><a class="more" href="#literatura" data-go="literatura">Відкрити розділ</a></article>
+      <article class="card"><h3>Підготовка до НМТ</h3><p>Перелік тем для повторення з позначками виконаного й порадами щодо підготовки.</p><a class="more" href="#nmt" data-go="nmt">Відкрити розділ</a></article>
+      <article class="card"><h3>Бібліотека матеріалів</h3><p>Каталог шпаргалок, конспектів і добірок із пошуком та фільтрами за темами.</p><a class="more" href="#biblioteka" data-go="biblioteka">Відкрити розділ</a></article>
+    </div>
+  </div>
+</section>
+
+<!-- 2. УКРАЇНСЬКА МОВА -->
+<section class="sec" id="mova">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Правила й приклади</span>
+      <h2>Українська мова</h2>
+      <p>Чотири теми, з яких найчастіше починається повторення. Натисніть на назву, щоб прочитати правило.</p>
+    </div>
+    <div class="grid">
+      <article class="card">
+        <h3>Орфографія: апостроф</h3>
+        <p>Один знак, який легко пропустити.</p>
+        <details>
+          <summary>Правило й приклади</summary>
+          <div class="body">
+            <p>Апостроф ставимо перед літерами <b>я, ю, є, ї</b> після <b>б, п, в, м, ф, р</b> та після префіксів, що закінчуються на приголосний.</p>
+            <div class="tags"><span class="tag">м'ята</span><span class="tag">п'ять</span><span class="tag">зв'язок</span><span class="tag">бар'єр</span><span class="tag">під'їзд</span></div>
+            <p>Не ставимо, якщо перед губним приголосним стоїть інший приголосний: <b>морквяний</b>, <b>дзвякнути</b>.</p>
+          </div>
+        </details>
+      </article>
+      <article class="card">
+        <h3>Морфологія: кличний відмінок</h3>
+        <p>Як правильно звертатися до людей.</p>
+        <details>
+          <summary>Правило й приклади</summary>
+          <div class="body">
+            <p>Звертання вживаємо в кличному відмінку, а не в називному.</p>
+            <div class="tags"><span class="tag">друг → друже</span><span class="tag">Олена → Олено</span><span class="tag">мати → мамо</span><span class="tag">Андрій → Андрію</span></div>
+            <p>Прикметник або займенник у звертанні узгоджується з іменником: <i>«Шановна Олено Петрівно!»</i></p>
+          </div>
+        </details>
+      </article>
+      <article class="card">
+        <h3>Синтаксис і пунктуація</h3>
+        <p>Коли потрібні кома й тире.</p>
+        <details>
+          <summary>Правило й приклади</summary>
+          <div class="body">
+            <p>Кому ставимо перед протиставними сполучниками <b>але, проте, однак, а</b> та перед підрядними сполучниками <b>що, щоб, який</b>.</p>
+            <p class="work">Я хотів прийти, але не встиг.</p>
+            <p>Тире між підметом і присудком ставимо, коли обидва виражені іменниками в називному відмінку:</p>
+            <p class="work">Київ — столиця України.</p>
+          </div>
+        </details>
+      </article>
+      <article class="card">
+        <h3>Разом, окремо чи через дефіс</h3>
+        <p>Правопис слів, які часто плутають.</p>
+        <details>
+          <summary>Правило й приклади</summary>
+          <div class="body">
+            <p>Через дефіс пишемо прислівники з префіксом <b>по-</b> та частками <b>-но, -бо</b>, слова з <b>будь-</b>, <b>казна-</b>.</p>
+            <div class="tags"><span class="tag">по-українськи</span><span class="tag">по-перше</span><span class="tag">будь-який</span><span class="tag">давним-давно</span></div>
+            <p>Прийменники пишемо окремо від іменників: <i>на жаль, у майбутньому</i>.</p>
+          </div>
+        </details>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- 3. ЛЕКСИКА Й КУЛЬТУРА МОВЛЕННЯ -->
+<section class="sec alt" id="leksyka">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Мовлення без кальок</span>
+      <h2>Лексика й культура мовлення</h2>
+      <p>Кальки потрапили в мову з російської. Українська має власні точні відповідники, і їх варто знати.</p>
+    </div>
+    <label class="switch" for="hideAns"><input type="checkbox" id="hideAns"> Режим самоперевірки: сховати правильні варіанти</label>
+    <div class="table-scroll">
+      <table id="calques">
+        <thead><tr><th scope="col">Уникаймо</th><th scope="col">Кажімо й пишімо</th></tr></thead>
+        <tbody>
+          <tr><td class="bad">приймати участь</td><td class="ans" tabindex="0">брати участь</td></tr>
+          <tr><td class="bad">на протязі тижня</td><td class="ans" tabindex="0">протягом тижня</td></tr>
+          <tr><td class="bad">слідуючий</td><td class="ans" tabindex="0">наступний</td></tr>
+          <tr><td class="bad">співпадати</td><td class="ans" tabindex="0">збігатися</td></tr>
+          <tr><td class="bad">в залежності від</td><td class="ans" tabindex="0">залежно від</td></tr>
+          <tr><td class="bad">міроприємство</td><td class="ans" tabindex="0">захід</td></tr>
+          <tr><td class="bad">по закінченню</td><td class="ans" tabindex="0">після закінчення</td></tr>
+          <tr><td class="bad">мати місце</td><td class="ans" tabindex="0">відбуватися</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="grid tips">
+      <article class="card"><h3>Точність</h3><p>Добирайте слово, яке називає саме те, що ви маєте на увазі. «Правильно» й «вірно» не тотожні: відповідь буває правильною, а вірною буває людина.</p></article>
+      <article class="card"><h3>Стислість</h3><p>Якщо думку можна сказати коротше без втрати змісту, скажіть коротше. Зайві слова заважають слухачеві.</p></article>
+      <article class="card"><h3>Живі вирази</h3><p>Фразеологізми прикрашають мову, коли доречні: «бити байдики», «ловити гав», «спати без задніх ніг». Вчіть їх разом із прикладами вживання.</p></article>
+    </div>
+  </div>
+</section>
+
+<!-- 4. ІНТЕРАКТИВНІ ВПРАВИ -->
+<section class="sec" id="vpravy">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Практика</span>
+      <h2>Інтерактивні вправи</h2>
+      <p>Виконайте завдання й натисніть «Перевірити». Після кожної відповіді ви побачите пояснення.</p>
+    </div>
+    <div class="score" aria-live="polite">
+      <div class="score-row">
+        <strong id="scoreText">Правильних відповідей: 0 з 5</strong>
+        <button class="btn" type="button" id="resetAll">Почати спочатку</button>
+      </div>
+      <div class="bar" role="progressbar" aria-label="Правильні відповіді" aria-valuemin="0" aria-valuemax="5" aria-valuenow="0" id="scoreBar"><i id="scoreFill"></i></div>
+    </div>
+    <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(min(100%, 360px), 1fr));">
+      <div class="ex" data-ex="ex1"></div>
+      <div class="ex" data-ex="ex2"></div>
+      <div class="ex" data-ex="ex3"></div>
+      <div class="ex" data-ex="ex4"></div>
+      <div class="ex" data-ex="ex5"></div>
+    </div>
+  </div>
+</section>
+
+<!-- 5. УКРАЇНСЬКА ЛІТЕРАТУРА -->
+<section class="sec alt" id="literatura">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Від бароко до сучасності</span>
+      <h2>Українська література</h2>
+      <p>Шість імен для знайомства. У кожної картки є питання для обговорення на уроці чи для власних роздумів.</p>
+    </div>
+    <div class="grid">
+      <article class="card">
+        <h3>Григорій Сковорода</h3>
+        <p class="years">1722–1794 · доба бароко</p>
+        <p>Мандрівний філософ і поет. Відомий збіркою «Байки харківські» та ідеєю «сродної праці».</p>
+        <details><summary>Питання для роздуму</summary><div class="body"><p>Що, на думку Сковороди, робить людину щасливою? Як ви розумієте вибір діла «за покликанням»?</p></div></details>
+      </article>
+      <article class="card">
+        <h3>Тарас Шевченко</h3>
+        <p class="years">1814–1861 · романтизм</p>
+        <p>Поет і художник, автор «Кобзаря», перше видання якого вийшло 1840 року.</p>
+        <details><summary>Питання для роздуму</summary><div class="body"><p>Як у «Заповіті» особисте прохання поєднується зі спрямуванням до всього народу?</p></div></details>
+      </article>
+      <article class="card">
+        <h3>Іван Франко</h3>
+        <p class="years">1856–1916 · реалізм і модернізм</p>
+        <p>Письменник, учений, громадський діяч. Автор історичної повісті «Захар Беркут» (1883).</p>
+        <details><summary>Питання для роздуму</summary><div class="body"><p>Яку роль у повісті відіграє єдність громади? Чому її сила важливіша за силу окремої людини?</p></div></details>
+      </article>
+      <article class="card">
+        <h3>Леся Українка</h3>
+        <p class="years">1871–1913 · модернізм</p>
+        <p>Поетеса й драматургиня. Драма-феєрія «Лісова пісня» написана 1911 року.</p>
+        <details><summary>Питання для роздуму</summary><div class="body"><p>Що символізують образи Мавки й Лукаша? Чому їхня історія не може завершитися щасливо?</p></div></details>
+      </article>
+      <article class="card">
+        <h3>Василь Стус</h3>
+        <p class="years">1938–1985 · шістдесятники</p>
+        <p>Поет і перекладач, чия збірка «Палімпсест» створена в неволі.</p>
+        <details><summary>Питання для роздуму</summary><div class="body"><p>Як у віршах Стуса звучить тема внутрішньої свободи за зовнішньої несвободи?</p></div></details>
+      </article>
+      <article class="card">
+        <h3>Ліна Костенко</h3>
+        <p class="years">народилася 1930 · сучасна поезія</p>
+        <p>Поетеса, авторка історичного роману у віршах «Маруся Чурай» (1979).</p>
+        <details><summary>Питання для роздуму</summary><div class="body"><p>Чому історія пісні й долі Марусі досі хвилює читачів? Які вибори стоять перед героїнею?</p></div></details>
+      </article>
+    </div>
+    <div class="quiz">
+      <div class="ex" data-ex="lit"></div>
+    </div>
+  </div>
+</section>
+
+<!-- 6. ПІДГОТОВКА ДО НМТ -->
+<section class="sec" id="nmt">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Національний мультипредметний тест</span>
+      <h2>Підготовка до НМТ</h2>
+      <p>Складіть власний план повторення. Позначайте теми, які вже опрацювали, і дивіться, скільки лишилося.</p>
+    </div>
+    <div class="nmt-grid">
+      <div class="card">
+        <h3>Теми для повторення з української мови</h3>
+        <ul class="check" id="nmtList"></ul>
+        <div class="prog">
+          <strong id="nmtText">Опрацьовано: 0 з 8</strong>
+          <div class="bar" role="progressbar" aria-label="Прогрес повторення" aria-valuemin="0" aria-valuemax="8" aria-valuenow="0" id="nmtBar"><i id="nmtFill"></i></div>
+          <div class="btn-row"><button class="btn ghost" type="button" id="nmtReset">Скинути позначки</button></div>
+        </div>
+      </div>
+      <div class="grid" style="grid-template-columns: minmax(0,1fr);">
+        <article class="card"><h3>Поради</h3><p>Повторюйте по одній темі за раз. Після кожної виконайте кілька тестових завдань і розберіть помилки. Читайте текст двічі: спочатку загалом, потім із запитаннями.</p></article>
+        <div class="note"><p><b>Важливо.</b> Перелік тем і формат тесту можуть змінюватися. Актуальні вимоги дивіться в офіційних матеріалах Українського центру оцінювання якості освіти: <a href="https://testportal.gov.ua" target="_blank" rel="noopener">testportal.gov.ua</a>.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 7. БІБЛІОТЕКА -->
+<section class="sec alt" id="biblioteka">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Каталог</span>
+      <h2>Бібліотека навчальних матеріалів</h2>
+      <p>Так виглядатиме каталог. Пошук і фільтри вже працюють, а самі файли вчитель додасть пізніше.</p>
+    </div>
+    <div class="tools">
+      <label class="sr" for="libSearch">Пошук матеріалів</label>
+      <input class="search" id="libSearch" type="search" placeholder="Пошук за назвою, наприклад «апостроф»" autocomplete="off">
+      <div class="chips" id="libChips" role="group" aria-label="Фільтр за темою"></div>
+    </div>
+    <p class="lib-meta" id="libMeta" aria-live="polite"></p>
+    <div class="grid" id="libGrid"></div>
+  </div>
+</section>
+
+<!-- 8. ПРО ВЧИТЕЛЯ -->
+<section class="sec" id="pro-vchytelia">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Автор сайту</span>
+      <h2>Про вчителя</h2>
+      <p>Цей розділ чекає на ваш власний текст. Нижче показано, з чого він може складатися.</p>
+    </div>
+    <div class="about-grid">
+      <div class="photo"><span>Місце для фотографії<br>вчителя</span></div>
+      <dl class="fill">
+        <div><dt>Ім'я та посада</dt><dd class="placeholder">Буде додано вчителем.</dd></div>
+        <div><dt>Освіта й досвід</dt><dd class="placeholder">Буде додано вчителем.</dd></div>
+        <div><dt>Підхід до навчання</dt><dd class="placeholder">Кілька речень про те, як ви працюєте з учнями й студентами.</dd></div>
+        <div><dt>Нагороди та публікації</dt><dd class="placeholder">Необов'язковий блок. Додайте тільки те, що вважаєте за потрібне.</dd></div>
+      </dl>
+    </div>
+  </div>
+</section>
+
+<!-- 9. КОНТАКТИ -->
+<section class="sec alt" id="kontakty">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Зв'язок</span>
+      <h2>Контакти</h2>
+      <p>Контактні дані ще не додано. Вкажіть лише ті способи зв'язку, якими ви справді хочете користуватися.</p>
+    </div>
+    <div class="contact-grid">
+      <article class="card"><h3>Електронна пошта</h3><p class="placeholder">Адресу буде вказано тут.</p></article>
+      <article class="card"><h3>Месенджер або соцмережа</h3><p class="placeholder">Посилання буде додано тут.</p></article>
+      <article class="card"><h3>Школа й години прийому</h3><p class="placeholder">Інформацію буде додано тут.</p></article>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="band" aria-hidden="true"></div>
+    <p><b>Українська з натхненням.</b> Демонстраційна версія сайту для вчителя української мови та літератури. Усі матеріали й розділи можна змінювати та доповнювати.</p>
+  </div>
+</footer>
+
+<script>
+(function () {
+  var $ = function (s, r) { return (r || document).querySelector(s); };
+  var $$ = function (s, r) { return Array.prototype.slice.call((r || document).querySelectorAll(s)); };
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* ---------- Навігація ---------- */
+  var nav = $('#nav'), menuBtn = $('#menuBtn');
+  function closeMenu() { nav.classList.remove('open'); menuBtn.setAttribute('aria-expanded', 'false'); }
+  menuBtn.addEventListener('click', function () {
+    var open = nav.classList.toggle('open');
+    menuBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+  function go(id) {
+    var el = document.getElementById(id);
+    if (!el) return;
+    el.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'start' });
+    closeMenu();
+  }
+  $$('[data-go]').forEach(function (a) {
+    a.addEventListener('click', function (e) { e.preventDefault(); go(a.getAttribute('data-go')); });
+  });
+
+  var links = $$('#nav a');
+  function setActive(id) {
+    links.forEach(function (a) {
+      if (a.getAttribute('data-go') === id) a.setAttribute('aria-current', 'true');
+      else a.removeAttribute('aria-current');
+    });
+  }
+  setActive('home');
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) { if (en.isIntersecting) setActive(en.target.id); });
+    }, { rootMargin: '-35% 0px -60% 0px' });
+    links.forEach(function (a) { var s = document.getElementById(a.getAttribute('data-go')); if (s) io.observe(s); });
+  }
+
+  /* ---------- Вправи ---------- */
+  var KINDS = { choice: 'Вибір правильної відповіді', input: 'Вставлення пропущеного слова', context: 'Значення слова в контексті' };
+  var EX = [
+    { id: 'try', type: 'choice', q: 'Спробуй себе: оберіть правильний варіант',
+      stem: 'Олімпіада триватиме ___ тижня.',
+      options: ['на протязі', 'протягом', 'по протязі'], answer: 1,
+      why: 'Для значення «упродовж певного часу» вживаємо прийменник «протягом» із родовим відмінком: протягом тижня. Сполучення «на протязі» у цьому значенні є калькою.' },
+    { id: 'ex1', group: 'main', type: 'choice', q: 'Як звернутися до жінки на імʼя?',
+      stem: 'Оберіть речення зі звертанням у правильній формі.',
+      options: ['Олена, підійдіть, будь ласка.', 'Олено, підійдіть, будь ласка.', 'Оленою, підійдіть, будь ласка.'], answer: 1,
+      why: 'Звертання стоїть у кличному відмінку: Олена → Олено. Закінчення -о мають жіночі імена першої відміни твердої групи.' },
+    { id: 'ex2', group: 'main', type: 'input', q: 'Вставте пропущене слово',
+      before: 'Ми досягли успіху ', after: ' наполегливій праці.', size: 9,
+      answers: ['завдяки'],
+      hints: { 'дякуючи': 'Слово «дякуючи» — дієприслівник від «дякувати», тобто «висловлюючи подяку». Для причини, яка призвела до позитивного результату, вживаємо прийменник «завдяки».' },
+      why: 'Прийменник «завдяки» вимагає давального відмінка: завдяки праці. Він указує на причину позитивного результату.', show: 'завдяки' },
+    { id: 'ex3', group: 'main', type: 'context', q: 'Що означає слово «ключ»?',
+      stem: 'Із-під скелі бив холодний <mark>ключ</mark>, і подорожні набирали з нього води.',
+      options: ['Металевий предмет для відмикання замка', 'Джерело, струмок, що бʼє з-під землі', 'Знак на початку нотного рядка', 'Спосіб розвʼязання задачі'], answer: 1,
+      why: 'Значення підказує контекст: «із-під скелі», «холодний», «набирали води». У розмовній і поетичній мові «ключ» може означати джерело.' },
+    { id: 'ex4', group: 'main', type: 'input', q: 'Вставте пропущений знак',
+      before: 'Біля дошки стоять п', after: 'ять учнів.', size: 2,
+      answers: ["'", "п'ять"], show: "апостроф ( ' )",
+      why: 'Апостроф ставимо перед я, ю, є, ї після літер б, п, в, м, ф, р: пʼять, мʼята, звʼязок, барʼєр.' },
+    { id: 'ex5', group: 'main', type: 'context', q: 'Що означає вислів «бити байдики»?',
+      stem: 'Цілий тиждень Максим <mark>бив байдики</mark>, а перед іспитом схопився за підручник.',
+      options: ['Старанно працювати', 'Нічого не робити, байдикувати', 'Лагодити інструменти', 'Ходити на риболовлю'], answer: 1,
+      why: 'Фразеологізм «бити байдики» означає марнувати час. Це підтверджує протиставлення: «а перед іспитом схопився за підручник».' },
+    { id: 'lit', type: 'choice', q: 'Міні-тест із літератури: хто автор?',
+      stem: 'Драму-феєрію «Лісова пісня» написала:',
+      options: ['Іван Франко', 'Леся Українка', 'Ольга Кобилянська', 'Ліна Костенко'], answer: 1,
+      why: 'Драму-феєрію «Лісова пісня» Леся Українка написала 1911 року. Її головні образи — Мавка й Лукаш.' }
+  ];
+  var state = {};
+  var MAIN = EX.filter(function (e) { return e.group === 'main'; });
+
+  function norm(s) { return s.trim().toLowerCase().replace(/[’ʼ`´‘]/g, "'"); }
+
+  function updateScore() {
+    var ok = 0;
+    MAIN.forEach(function (e) { if (state[e.id] === true) ok++; });
+    var n = MAIN.length;
+    $('#scoreText').textContent = 'Правильних відповідей: ' + ok + ' з ' + n;
+    $('#scoreFill').style.width = (ok / n * 100) + '%';
+    $('#scoreBar').setAttribute('aria-valuenow', ok);
+  }
+
+  function build(ex) {
+    var root = document.querySelector('[data-ex="' + ex.id + '"]');
+    if (!root) return;
+    var html = '<p class="ex-kind">' + KINDS[ex.type] + '</p><h3>' + ex.q + '</h3>';
+    if (ex.type === 'input') {
+      html += '<p class="gap">' + ex.before + '<input type="text" id="in-' + ex.id + '" autocomplete="off" autocapitalize="off" spellcheck="false" size="' + ex.size + '" maxlength="12" aria-label="Ваша відповідь"> ' + ex.after + '</p>';
+    } else {
+      html += '<p class="stem">' + ex.stem + '</p><div class="opts" role="radiogroup">';
+      ex.options.forEach(function (o, i) {
+        html += '<label class="opt"><input type="radio" name="o-' + ex.id + '" value="' + i + '"><span>' + o + '</span></label>';
+      });
+      html += '</div>';
+    }
+    html += '<div class="actions"><button type="button" class="btn" data-act="check">Перевірити</button><button type="button" class="btn ghost" data-act="retry" hidden>Спробувати ще раз</button></div><div class="fb" role="status" aria-live="polite"></div>';
+    root.innerHTML = html;
+
+    var fb = $('.fb', root), checkBtn = $('[data-act="check"]', root), retryBtn = $('[data-act="retry"]', root);
+    var inputs = $$('input', root);
+
+    function say(cls, title, text) {
+      fb.className = 'fb ' + cls;
+      fb.innerHTML = '<strong>' + title + '</strong>' + text;
+    }
+    function lock(v) { inputs.forEach(function (i) { i.disabled = v; }); checkBtn.disabled = v; }
+
+    function check() {
+      var ok = false;
+      if (ex.type === 'input') {
+        var inp = inputs[0], v = norm(inp.value);
+        if (!v) { say('warn', 'Спершу введіть відповідь.', 'Заповніть пропуск і натисніть «Перевірити».'); return; }
+        ok = ex.answers.indexOf(v) !== -1;
+        inp.className = ok ? 'is-ok' : 'is-bad';
+        if (ok) say('ok', 'Правильно!', ex.why);
+        else say('bad', 'Поки що неправильно.', (ex.hints && ex.hints[v] ? ex.hints[v] + ' ' : '') + 'Правильна відповідь: ' + ex.show + '. ' + ex.why);
+      } else {
+        var c = $('input:checked', root);
+        if (!c) { say('warn', 'Спершу оберіть варіант.', 'Позначте одну відповідь і натисніть «Перевірити».'); return; }
+        var given = parseInt(c.value, 10);
+        ok = given === ex.answer;
+        $$('.opt', root).forEach(function (l, i) {
+          l.classList.remove('is-ok', 'is-bad');
+          if (i === ex.answer) l.classList.add('is-ok');
+          else if (i === given) l.classList.add('is-bad');
+        });
+        if (ok) say('ok', 'Правильно!', ex.why);
+        else say('bad', 'Поки що неправильно.', 'Правильна відповідь: «' + ex.options[ex.answer].replace(/[.]$/, '') + '». ' + ex.why);
+      }
+      state[ex.id] = ok;
+      lock(true);
+      retryBtn.hidden = false;
+      retryBtn.focus();
+      updateScore();
+    }
+    function retry() {
+      inputs.forEach(function (i) { if (i.type === 'text') { i.value = ''; i.className = ''; } else { i.checked = false; } });
+      $$('.opt', root).forEach(function (l) { l.classList.remove('is-ok', 'is-bad'); });
+      fb.className = 'fb'; fb.innerHTML = '';
+      state[ex.id] = null;
+      lock(false);
+      retryBtn.hidden = true;
+      updateScore();
+      if (inputs[0]) inputs[0].focus();
+    }
+    checkBtn.addEventListener('click', check);
+    retryBtn.addEventListener('click', retry);
+    root._retry = retry;
+    if (ex.type === 'input') inputs[0].addEventListener('keydown', function (e) { if (e.key === 'Enter') { e.preventDefault(); if (!checkBtn.disabled) check(); } });
+  }
+  EX.forEach(build);
+  updateScore();
+  $('#resetAll').addEventListener('click', function () {
+    MAIN.forEach(function (e) {
+      var r = document.querySelector('[data-ex="' + e.id + '"]');
+      if (r && r._retry && state[e.id] !== undefined && state[e.id] !== null) r._retry();
+    });
+    state = {};
+    updateScore();
+  });
+
+  /* ---------- Режим самоперевірки в таблиці ---------- */
+  var calques = $('#calques');
+  $('#hideAns').addEventListener('change', function (e) {
+    calques.classList.toggle('hide-ans', e.target.checked);
+    $$('td.ans', calques).forEach(function (td) { td.classList.remove('shown'); });
+  });
+  $$('td.ans', calques).forEach(function (td) {
+    function reveal() { if (calques.classList.contains('hide-ans')) td.classList.toggle('shown'); }
+    td.addEventListener('click', reveal);
+    td.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); reveal(); } });
+  });
+
+  /* ---------- НМТ: чек-лист ---------- */
+  var NMT = ['Орфоепія й наголос', 'Правопис: апостроф, мʼякий знак, подвоєння', 'Лексикологія та фразеологія', 'Будова слова й словотворення', 'Морфологія: частини мови', 'Синтаксис простого й складного речення', 'Пунктуація', 'Робота з текстом: тема, головна думка, стилі'];
+  var KEY = 'ukr-nmt-done';
+  var done = {};
+  try { done = JSON.parse(localStorage.getItem(KEY) || '{}') || {}; } catch (e) { done = {}; }
+  var list = $('#nmtList');
+  NMT.forEach(function (t, i) {
+    var li = document.createElement('li');
+    li.innerHTML = '<label><input type="checkbox" id="nmt-' + i + '"><span></span></label>';
+    $('span', li).textContent = t;
+    var cb = $('input', li);
+    cb.checked = !!done[i];
+    cb.addEventListener('change', function () {
+      done[i] = cb.checked; save(); nmtUpdate();
+    });
+    list.appendChild(li);
+  });
+  function save() { try { localStorage.setItem(KEY, JSON.stringify(done)); } catch (e) {} }
+  function nmtUpdate() {
+    var n = $$('input', list).filter(function (c) { return c.checked; }).length;
+    $('#nmtText').textContent = 'Опрацьовано: ' + n + ' з ' + NMT.length;
+    $('#nmtFill').style.width = (n / NMT.length * 100) + '%';
+    $('#nmtBar').setAttribute('aria-valuenow', n);
+  }
+  nmtUpdate();
+  $('#nmtReset').addEventListener('click', function () {
+    $$('input', list).forEach(function (c) { c.checked = false; });
+    done = {}; save(); nmtUpdate();
+  });
+
+  /* ---------- Бібліотека ---------- */
+  var LIB = [
+    { t: 'Апостроф: коли ставимо, а коли ні', k: 'Мова', f: 'Шпаргалка' },
+    { t: 'Кличний відмінок: звертаємося правильно', k: 'Мова', f: 'Конспект' },
+    { t: 'Кальки та їхні українські відповідники', k: 'Лексика', f: 'Добірка' },
+    { t: 'Фразеологізми: значення та вживання', k: 'Лексика', f: 'Добірка' },
+    { t: '«Кобзар» Тараса Шевченка: питання для обговорення', k: 'Література', f: 'Конспект' },
+    { t: '«Лісова пісня»: образи й символи', k: 'Література', f: 'Аналіз твору' },
+    { t: 'Тренувальні завдання з правопису', k: 'НМТ', f: 'Тест' },
+    { t: 'Робота з текстом: як знайти головну думку', k: 'НМТ', f: 'Конспект' }
+  ];
+  var cats = ['Усі', 'Мова', 'Лексика', 'Література', 'НМТ'], cur = 'Усі';
+  var chips = $('#libChips'), grid = $('#libGrid'), meta = $('#libMeta'), q = $('#libSearch');
+  cats.forEach(function (c) {
+    var b = document.createElement('button');
+    b.type = 'button'; b.className = 'chip'; b.textContent = c;
+    b.setAttribute('aria-pressed', c === cur ? 'true' : 'false');
+    b.addEventListener('click', function () {
+      cur = c;
+      $$('.chip', chips).forEach(function (x) { x.setAttribute('aria-pressed', x === b ? 'true' : 'false'); });
+      renderLib();
+    });
+    chips.appendChild(b);
+  });
+  function renderLib() {
+    var s = q.value.trim().toLowerCase();
+    var items = LIB.filter(function (i) {
+      return (cur === 'Усі' || i.k === cur) && (!s || i.t.toLowerCase().indexOf(s) !== -1);
+    });
+    grid.innerHTML = '';
+    if (!items.length) {
+      var d = document.createElement('div'); d.className = 'empty';
+      d.textContent = 'Нічого не знайдено. Змініть запит або оберіть іншу тему.';
+      grid.appendChild(d);
+    }
+    items.forEach(function (i) {
+      var a = document.createElement('article'); a.className = 'card lib-item';
+      a.innerHTML = '<div class="kind"><span class="tag"></span><span class="status">Незабаром</span></div><h3></h3><p class="placeholder">Матеріал готується до публікації.</p>';
+      $('.tag', a).textContent = i.k + ' · ' + i.f;
+      $('h3', a).textContent = i.t;
+      grid.appendChild(a);
+    });
+    meta.textContent = 'Показано записів: ' + items.length + ' з ' + LIB.length;
+  }
+  q.addEventListener('input', renderLib);
+  renderLib();
+})();
+</script>
+
+</body></html>
